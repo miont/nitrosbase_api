@@ -1,0 +1,1 @@
+# Python Database API for NitrosBase (https://www.nitrosbase.com)
