@@ -1,2 +1,2 @@
-from nbase.dbapi import connect
-from nbase.common import *
+from pynbase.dbapi import connect
+from pynbase.common import *

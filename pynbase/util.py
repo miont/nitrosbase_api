@@ -1,9 +1,9 @@
-from nbase.common import ApiType
-import nbase.cpp_api.api as cpp_api
-import nbase.odbc.api as odbc
+from .common import ApiType
+from .cpp_api.api import CppApi
+from .odbc.api import OdbcApi
 
 def get_core_api(api_type:ApiType=ApiType.CPP_LIB):
   return {
-    ApiType.CPP_LIB: cpp_api.CppApi,
-    ApiType.ODBC:    odbc.OdbcApi
+    ApiType.CPP_LIB: CppApi,
+    ApiType.ODBC:    OdbcApi
   }[api_type]

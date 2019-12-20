@@ -1,14 +1,14 @@
 import sys
 import logging
 
-import nbase.common as common
-from nbase.util import get_core_api
+from . import common
+from .util import get_core_api
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-def connect(host:str='localhost', port:int=3020, 
-            user:str=None, password:str=None, 
+def connect(host:str='localhost', port:int=3020,
+            user:str=None, password:str=None,
             api:common.ApiType=common.ApiType.CPP_LIB, **params):
   logger.info('Connecting to DB on {}:{}'.format(host, port))
   return Connection(host, port, user, password, core_api_cls=get_core_api(), **params)
