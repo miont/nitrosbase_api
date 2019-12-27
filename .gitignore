@@ -1,2 +1,5 @@
 env
+build
+dist
+pynbase.egg-info
 __pycache__

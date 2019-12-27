@@ -78,7 +78,9 @@ class CppApi(object):
     return self.lib.nb_fetch_row(self.conn) == NBErrorType.NB_OK
 
   def execute_sql(self, query:str):
-    self.lib.nb_execute_sql(self.conn, query.encode(), len(query))
+    logger.info('SQL: {}'.format(query))
+    query_encoded = query.encode('utf-8')
+    self.lib.nb_execute_sql(self.conn, query_encoded, len(query_encoded))
     self.check_error()
 
   def field_count(self):

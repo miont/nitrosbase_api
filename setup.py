@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="nitrosbase", # Replace with your own username
-    version="0.0.1",
+    name="pynbase", # Replace with your own username
+    version="0.0.2",
     author="Konstantin Ostrovskiy",
     author_email="kostrovskiy@fil-it.ru",
     description="Nitrosbase Python API",
