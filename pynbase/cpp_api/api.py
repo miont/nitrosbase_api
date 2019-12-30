@@ -1,6 +1,7 @@
 import os
 import sys
 import logging
+from datetime import datetime
 import struct
 import ctypes
 
@@ -50,7 +51,11 @@ def _get_value(val: NBValue):
     return struct.unpack('d', bytes(val.value)[:8])[0]
   elif val.type in (NBDataType.NB_DATA_STRING, NBDataType.NB_DATA_DATETIME, NBDataType.NB_DATA_DATE):
     addr = int.from_bytes(bytes(val.value)[:8], byteorder='little', signed=False)
-    return ctypes.c_char_p(addr).value.decode()
+    s = ctypes.c_char_p(addr).value.decode()
+    if val.type == NBDataType.NB_DATA_STRING:
+      return s
+    if val.type == NBDataType.NB_DATA_DATETIME or val.type == NBDataType.NB_DATA_DATE:
+      return datetime.strptime(s, r'%Y-%m-%d %H:%M:%S')
 
 class CppApi(object):
   def __init__(self, lib_path:str=None):
